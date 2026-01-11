@@ -30,7 +30,6 @@
 	];
 
 	const navItems = [
-		{ label: 'Головна', href: '#hero' },
 		{ label: 'Методики', href: '#methods' },
 		{ label: 'Команда', href: '#team' },
 		{ label: 'Прайс', href: '#pricing' },

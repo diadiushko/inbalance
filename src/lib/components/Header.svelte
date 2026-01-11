@@ -2,7 +2,6 @@
 	import logo from '$lib/assets/logo.png';
 
 	const navItems = [
-		{ label: 'Головна', href: '#hero' },
 		{ label: 'Методики', href: '#methods' },
 		{ label: 'Команда', href: '#team' },
 		{ label: 'Прайс', href: '#pricing' },
@@ -42,7 +41,7 @@
 				<li>
 					<a
 						href={item.href}
-						class="font-medium text-gray-dark transition-colors duration-200 hover:text-primary"
+						class="font-medium text-gray-300 transition-colors duration-200 hover:text-primary"
 					>
 						{item.label}
 					</a>
