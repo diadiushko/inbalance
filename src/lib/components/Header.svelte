@@ -41,7 +41,9 @@
 				<li>
 					<a
 						href={item.href}
-						class="font-medium text-gray-300 transition-colors duration-200 hover:text-primary"
+						class="font-medium transition-colors duration-200 hover:text-primary {isScrolled
+							? 'text-gray-dark'
+							: 'text-gray-300'}"
 					>
 						{item.label}
 					</a>
@@ -58,7 +60,9 @@
 
 		<button
 			type="button"
-			class="flex h-10 w-10 items-center justify-center rounded-lg text-gray-dark md:hidden"
+			class="flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-200 md:hidden {isScrolled
+				? 'text-gray-dark'
+				: 'text-gray-300'}"
 			onclick={toggleMenu}
 			aria-label="Меню"
 		>
