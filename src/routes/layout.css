@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--color-primary: #A569BD;
+	--color-primary-dark: #8E44AD;
+	--color-primary-light: #C39BD3;
+	--color-dark: #1C1C1C;
+	--color-gray-dark: #3D3D3D;
+	--color-gray: #5A5A5A;
+	--color-gray-light: #8A8A8A;
+	--color-light: #F5F5F5;
+	--color-white: #FFFFFF;
+
+	--font-heading: 'Great Vibes', cursive;
+	--font-body: 'Montserrat', sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-body);
+	color: var(--color-dark);
+	background-color: var(--color-white);
+}
