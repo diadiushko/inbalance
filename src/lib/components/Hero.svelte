@@ -9,7 +9,8 @@
 	<div class="gradient-bg absolute inset-0"></div>
 
 	<div
-		class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--color-primary-light)_0%,transparent_70%)] opacity-20"
+		class="absolute right-0 top-0 bg-[radial-gradient(ellipse_at_center,var(--color-primary-light)_0%,transparent_70%)] opacity-20"
+		style="width: 100%; height: 100%;"
 	></div>
 
 	<div class="relative z-10 mx-auto max-w-7xl px-4 py-20 text-center lg:px-8">
