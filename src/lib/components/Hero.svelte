@@ -96,4 +96,9 @@
 			background-position: 0% 50%;
 		}
 	}
+
+	#hero > div.absolute.inset-0.overflow-hidden {
+		left: unset;
+		top: unset;
+	}
 </style>
