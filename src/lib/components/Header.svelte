@@ -41,9 +41,9 @@
 				<li>
 					<a
 						href={item.href}
-						class="font-medium transition-colors duration-200 hover:text-primary {isScrolled
-							? 'text-gray-dark'
-							: 'text-gray-300'}"
+						class="rounded-full px-4 py-2 font-medium transition-all duration-200 hover:text-primary {isScrolled
+							? 'bg-white text-primary-dark shadow-sm hover:bg-gray-light'
+							: 'text-white hover:text-primary-light'}"
 					>
 						{item.label}
 					</a>
@@ -53,7 +53,7 @@
 
 		<a
 			href="#contacts"
-			class="hidden rounded-full bg-primary px-6 py-2.5 font-medium text-white transition-all duration-200 hover:bg-primary-dark hover:shadow-lg md:inline-block"
+			class="hidden rounded-full bg-white px-6 py-2.5 font-medium text-primary-dark shadow-lg transition-all duration-200 hover:bg-gray-light hover:shadow-lg md:inline-block"
 		>
 			Записатись
 		</a>

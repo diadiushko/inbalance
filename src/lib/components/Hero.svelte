@@ -4,10 +4,12 @@
 
 <section
 	id="hero"
-	class="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-gray to-dark pt-20"
+	class="relative flex min-h-screen items-center justify-center overflow-hidden pt-20"
 >
+	<div class="gradient-bg absolute inset-0"></div>
+
 	<div
-		class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-10"
+		class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--color-primary-light)_0%,transparent_70%)] opacity-20"
 	></div>
 
 	<div class="relative z-10 mx-auto max-w-7xl px-4 py-20 text-center lg:px-8">
@@ -20,12 +22,12 @@
 		</div>
 
 		<h1
-			class="font-heading mb-6 text-6xl font-medium tracking-wide text-white md:text-7xl lg:text-8xl"
+			class="font-heading mb-6 text-6xl font-medium tracking-wide text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] md:text-7xl lg:text-8xl"
 		>
-			Відновлення <span class="text-primary-light">балансу</span> вашого тіла
+			Відновлення балансу вашого тіла
 		</h1>
 
-		<p class="mx-auto mb-10 max-w-2xl text-lg text-gray-light md:text-xl">
+		<p class="mx-auto mb-10 max-w-2xl text-lg text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] md:text-xl">
 			Професійна реабілітація, масаж та відновлювальні процедури. Допоможемо повернути легкість
 			рухів та якість життя.
 		</p>
@@ -33,7 +35,7 @@
 		<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 			<a
 				href="#contacts"
-				class="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-primary-dark hover:shadow-xl"
+				class="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-medium text-primary-dark shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-gray-light hover:shadow-2xl"
 			>
 				<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path
@@ -48,7 +50,7 @@
 
 			<a
 				href="#methods"
-				class="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 text-lg font-medium text-white transition-all duration-300 hover:border-white/50 hover:bg-white/10"
+				class="inline-flex items-center gap-2 rounded-full border-2 border-white/60 bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-medium text-white shadow-lg transition-all duration-300 hover:border-white/80 hover:bg-white/20 hover:shadow-xl"
 			>
 				Дізнатись більше
 				<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -74,3 +76,23 @@
 		</svg>
 	</div>
 </section>
+
+<style>
+	.gradient-bg {
+		background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-light) 100%);
+		background-size: 200% 200%;
+		animation: gradientShift 15s ease infinite;
+	}
+
+	@keyframes gradientShift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+</style>
