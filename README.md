@@ -1,4 +1,16 @@
-# sv
+# IN Balance
+
+## Заявки з сайту
+
+Форма надсилає заявки через Telegram Bot API. Для роботи потрібні `TELEGRAM_BOT_TOKEN`
+і `TELEGRAM_CHAT_ID` чату, у який бот може писати. На Netlify задайте обидві змінні в
+**Project configuration → Environment variables** з доступом для **Functions**.
+Не додавайте токен у репозиторій або `netlify.toml`.
+
+Для локальної перевірки скопіюйте `.env.example` у `.env` і заповніть значення.
+Без цих змінних форма повертає помилку замість підтвердження запису.
+
+## Розробка
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 

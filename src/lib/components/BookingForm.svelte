@@ -19,7 +19,7 @@
 		e.preventDefault();
 
 		if (!name.trim() || !phone.trim()) {
-			errorMessage = 'Будь ласка, заповніть обов\'язкові поля';
+			errorMessage = "Будь ласка, заповніть обов'язкові поля";
 			status = 'error';
 			return;
 		}
@@ -50,12 +50,12 @@
 			message = '';
 		} catch {
 			status = 'error';
-			errorMessage = 'Не вдалося відправити заявку. Спробуйте ще раз або зателефонуйте нам.';
+			errorMessage = 'Не вдалося надіслати заявку. Спробуйте пізніше.';
 		}
 	};
 </script>
 
-<form onsubmit={handleSubmit} class="space-y-6">
+<form onsubmit={handleSubmit} class="booking-form space-y-5">
 	{#if status === 'success'}
 		<div class="rounded-xl bg-green-50 p-6 text-center">
 			<svg
@@ -84,7 +84,7 @@
 				id="name"
 				bind:value={name}
 				placeholder="Введіть ваше ім'я"
-				class="w-full rounded-xl border border-gray-light/30 px-4 py-3 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
+				class="w-full rounded-xl border border-primary/15 bg-white px-4 py-3.5 text-sm transition-all duration-200 focus:border-primary focus:ring-4 focus:ring-primary/10 focus:outline-none"
 				required
 			/>
 		</div>
@@ -98,7 +98,7 @@
 				id="phone"
 				bind:value={phone}
 				placeholder="+380 XX XXX XX XX"
-				class="w-full rounded-xl border border-gray-light/30 px-4 py-3 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
+				class="w-full rounded-xl border border-primary/15 bg-white px-4 py-3.5 text-sm transition-all duration-200 focus:border-primary focus:ring-4 focus:ring-primary/10 focus:outline-none"
 				required
 			/>
 		</div>
@@ -108,9 +108,9 @@
 			<select
 				id="service"
 				bind:value={service}
-				class="w-full rounded-xl border border-gray-light/30 px-4 py-3 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
+				class="w-full rounded-xl border border-primary/15 bg-white px-4 py-3.5 text-sm transition-all duration-200 focus:border-primary focus:ring-4 focus:ring-primary/10 focus:outline-none"
 			>
-				{#each services as s}
+				{#each services as s (s.value)}
 					<option value={s.value}>{s.label}</option>
 				{/each}
 			</select>
@@ -124,8 +124,8 @@
 				id="message"
 				bind:value={message}
 				rows={3}
-				placeholder="Опишіть вашу проблему або побажання"
-				class="w-full resize-none rounded-xl border border-gray-light/30 px-4 py-3 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
+				placeholder="Зручний час або інші побажання"
+				class="w-full resize-none rounded-xl border border-primary/15 bg-white px-4 py-3.5 text-sm transition-all duration-200 focus:border-primary focus:ring-4 focus:ring-primary/10 focus:outline-none"
 			></textarea>
 		</div>
 
@@ -138,18 +138,12 @@
 		<button
 			type="submit"
 			disabled={status === 'loading'}
-			class="w-full rounded-xl bg-primary py-4 font-medium text-white transition-all duration-200 hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-50"
+			class="w-full rounded-xl bg-primary-dark py-4 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50"
 		>
 			{#if status === 'loading'}
 				<span class="inline-flex items-center gap-2">
 					<svg class="h-5 w-5 animate-spin" fill="none" viewBox="0 0 24 24">
-						<circle
-							class="opacity-25"
-							cx="12"
-							cy="12"
-							r="10"
-							stroke="currentColor"
-							stroke-width="4"
+						<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
 						></circle>
 						<path
 							class="opacity-75"

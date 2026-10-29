@@ -25,37 +25,33 @@ export const POST: RequestHandler = async ({ request }) => {
 		return json({ error: 'Name and phone are required' }, { status: 400 });
 	}
 
-	const text = `
-🆕 *Нова заявка з сайту*
-
-👤 *Ім'я:* ${escapeMarkdown(name)}
-📱 *Телефон:* ${escapeMarkdown(phone)}
-📋 *Послуга:* ${serviceLabels[service] || service}
-${message ? `💬 *Коментар:* ${escapeMarkdown(message)}` : ''}
-
-📅 _${new Date().toLocaleString('uk-UA')}_
-	`.trim();
+	const text = [
+		'🆕 Нова заявка з сайту',
+		'',
+		`👤 Ім'я: ${name.trim()}`,
+		`📱 Телефон: ${phone.trim()}`,
+		`📋 Послуга: ${serviceLabels[service] || service}`,
+		...(message?.trim() ? [`💬 Коментар: ${message.trim()}`] : []),
+		'',
+		`📅 ${new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Kyiv' })}`
+	].join('\n');
 
 	const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = env;
 
 	if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-		console.log('Telegram credentials not configured. Booking received:', { name, phone, service, message });
-		return json({ success: true, message: 'Booking received (Telegram not configured)' });
+		console.error('Telegram booking credentials are not configured');
+		return json({ error: 'Booking is unavailable' }, { status: 503 });
 	}
 
 	try {
-		const response = await fetch(
-			`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-			{
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					chat_id: TELEGRAM_CHAT_ID,
-					text,
-					parse_mode: 'Markdown'
-				})
-			}
-		);
+		const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				chat_id: TELEGRAM_CHAT_ID,
+				text
+			})
+		});
 
 		if (!response.ok) {
 			const error = await response.text();
@@ -68,8 +64,4 @@ ${message ? `💬 *Коментар:* ${escapeMarkdown(message)}` : ''}
 		console.error('Telegram API error:', error);
 		return json({ error: 'Failed to send notification' }, { status: 500 });
 	}
-};
-
-const escapeMarkdown = (text: string): string => {
-	return text.replace(/[_*[\]()~`>#+=|{}.!-]/g, '\\$&');
 };
